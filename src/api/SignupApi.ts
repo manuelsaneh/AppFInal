@@ -3,6 +3,7 @@ import {useAppDispatch} from '../utils/redux/hooks/hooks';
 import {auth} from './instance/auth';
 import {Alert} from 'react-native';
 import {setToken} from '../utils/redux/slices/authSlice';
+import {onDisplayNotification} from '../utils/notification/notification';
 
 const useSignUp = (startLoading: () => void, stopLoading: () => void) => {
   const dispatch = useAppDispatch();
@@ -21,12 +22,7 @@ const useSignUp = (startLoading: () => void, stopLoading: () => void) => {
         if (result.status === 201) {
           const token = result.data.accessToken;
           dispatch(setToken(token));
-          Alert.alert('User Created', 'Successfully', [
-            {
-              text: 'Okay',
-              style: 'default',
-            },
-          ]);
+          onDisplayNotification();
         } else if (result.status === 400) {
           Alert.alert(' User already exists', 'Try again.', [
             {
