@@ -14,8 +14,10 @@ const Ingredients = ({data}: IIngredientsProp) => {
       {data &&
         data.extendedIngredients &&
         data.extendedIngredients.length > 0 &&
-        data.extendedIngredients.map(ingredient => (
-          <Text style={styles.text}> {ingredient.original}</Text>
+        data.extendedIngredients.map((ingredient, index) => (
+          <Text key={index} style={styles.text}>
+            {ingredient.original}
+          </Text>
         ))}
     </View>
   );

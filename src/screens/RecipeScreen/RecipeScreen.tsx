@@ -29,9 +29,9 @@ const RecipeScreen = ({route}: Props) => {
   const {loading, startLoading, stopLoading} = useLoading();
   const {name} = route.params;
 
-  const getDetails = async () => {
+  const getDetails = async (param: string | undefined) => {
     try {
-      const results = await getRecipeDetails(name, startLoading, stopLoading);
+      const results = await getRecipeDetails(param, startLoading, stopLoading);
       setDetails(results);
     } catch (error) {
       Alert.alert('Something went wrong.', 'Try again.', [
@@ -45,8 +45,8 @@ const RecipeScreen = ({route}: Props) => {
   console.log(details);
 
   useEffect(() => {
-    getDetails();
-  }, []);
+    getDetails(name);
+  }, [name]);
 
   return (
     <ScrollView style={styles.rootDetails}>

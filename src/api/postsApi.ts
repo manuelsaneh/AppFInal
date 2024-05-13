@@ -13,7 +13,7 @@ const useFetchPost = (startLoading: () => void, stopLoading: () => void) => {
   console.log(accessToken);
 
   const authPosts = axios.create({
-    baseURL: 'https://backend-practice.euriskomobility.me',
+    baseURL: 'http://192.30.129.113:5837',
     headers: {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',

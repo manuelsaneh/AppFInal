@@ -14,8 +14,8 @@ const Instructions = ({data}: IInstructionsProp) => {
       {data &&
         data.analyzedInstructions &&
         data.analyzedInstructions.length > 0 &&
-        data.analyzedInstructions[0].steps.map(instruction => (
-          <Text style={styles.text}>
+        data.analyzedInstructions[0].steps.map((instruction, index) => (
+          <Text style={styles.text} key={index}>
             {instruction.number}. {instruction.step}
           </Text>
         ))}
